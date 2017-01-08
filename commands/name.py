@@ -41,31 +41,3 @@ async def get_own_name(client, message):
     str = str[:-2]
 
     await client.send_message(message.channel, str)
-
-async def get_character(client, message):
-    msg = message.content.split()
-    # usage: !char <discord_name>
-
-    str = gmcn(msg[1])
-    title = msg[1]
-
-    # If the person's name ends with s (ex: Stannis), just add an apostrophe to
-    # the end. (ex: Stannis')
-    if msg[1][-1:] == 's':
-        title += "' Characters"
-    # Otherwise use "'s".
-    else:
-        title += "'s Characters"
-
-    # Use a code block to format it.
-    output = "```\n"
-    # Center the title.
-    output += title.center(40, '-')
-    output += "\n"
-    # Output all of the characters found. Space them appropriately.
-    for x in str:
-        output += "{:12s}   {:12s}   {:10s}\n".format(x[1], x[2], x[3])
-    output += "```"
-
-    # Output the message.
-    await client.send_message(message.channel, output)

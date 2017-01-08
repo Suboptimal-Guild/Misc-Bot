@@ -12,11 +12,19 @@ from commands.name import get_character as getchar
 from commands.logs import get_logs_page
 from commands.logs import get_logs_links
 
-# Development Constants
-DEV_BOT_NAME = "Daddybot-Dev"
-
-# Production Constants
-PRODUCTION_BOT_NAME = "Daddybot"
+# Constants
+BOT_NAMES = [
+    "Daddybot",
+    "Fupabot",
+    "Harambot 🍌",
+    "Riggbot",
+    "김정은",
+    "Daddybot-dev",
+    "Fupabot-Dev",
+    "Harambot-Dev",
+    "Riggbot-Dev",
+    "김정은-Dev"
+]
 
 client = discord.Client()
 
@@ -31,7 +39,7 @@ async def on_ready():
 async def on_message(message): # placeholder "bookmarks"
     # also we want to post messages in the channe lwhere the user asked, but
     # if possible make the message only viewable to them kinda like the default bot can do
-    if message.author.name == DEV_BOT_NAME or message.author.name == PRODUCTION_BOT_NAME:
+    if message.author.name in BOT_NAMES:
         pass
     elif message.content.startswith("!test"):
         await client.send_message(message.channel, 'I\'m a fuckboy.')

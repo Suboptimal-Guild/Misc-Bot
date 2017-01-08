@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import argparse
-
+import os
 import discord
 import asyncio
 
@@ -13,12 +13,10 @@ from commands.logs import get_logs_page
 from commands.logs import get_logs_links
 
 # Development Constants
-DEV_BOT_NAME = "Harambot-Dev"
-DEV_BOT_KEY = "MjQ5NTkwMTE3MzU2Nzk3OTUz.CxIg5A.BYYtQ1H4H3l4CuLl-YrWjI50eOk"
+DEV_BOT_NAME = "Daddybot-Dev"
 
 # Production Constants
 PRODUCTION_BOT_NAME = "Daddybot"
-PRODUCTION_BOT_KEY = "MjY0NjE2MTY4MzMyMDY2ODE2.C0jetw.KLucfuDDqpdFgPWDYc3b6LtUCIA"
 
 client = discord.Client()
 
@@ -82,8 +80,8 @@ if __name__ == "__main__":
     client.accept_invite('https://discord.gg/mM5fXCe')
 
     if args.dev:
-        client.run(DEV_BOT_KEY)
+        client.run(os.environ['MISCELLANEOUS_BOT_DEVELOPMENT_TOKEN'])
     elif args.prod:
-        client.run(PRODUCTION_BOT_KEY)
+        client.run(os.environ['MISCELLANEOUS_BOT_PRODUCTION_TOKEN'])
     else:
         print("RIP in peace.")

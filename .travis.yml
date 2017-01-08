@@ -1,12 +1,16 @@
 sudo: required
 language: python
 python:
-  - "3.5"
+  - '3.5'
 services:
   - docker
 install:
   - docker pull jfloff/alpine-python:latest-slim
   - docker build -t misc-bot .
-  - docker run -td misc-bot python3 run.py --dev
+  - docker run -td -e MISCELLANEOUS_BOT_DEVELOPMENT_TOKEN -e MISCELLANEOUS_BOT_PRODUCTION_TOKEN misc-bot python3 run.py --dev
 script:
   - docker ps | grep misc-bot
+env:
+  global:
+    - secure: dsQc3sjgo6MImKAWC2l1obWD3tQqnlv5c4C22giqH7DabfZZzXhMt5kzt92Ainp3eejLekSE9cUznXa7M986LxD8X/El1hy9T0JOKOx4ATK/XnTBorBZ5Uo+GCUQQVG0INpZD2sCeK61+ZFkzRtixkQnb6JVqllSlu+Xpe4ossszeG1YKJjp+V1fKzkJ0l4aCY0rC6rZZ+WbeFKQx+ABOa3/dFnb39XC9AvXYcdZ2WEXSMqwQqHFdi2VPckj68eP0+8TbGJt+5IiXrNyul0W/h5vPG/B4hRlL7wRoUMKQI9kR+Hz2CGfwYKSE27nHk+DpG5VdB6EWr4srCTyEl8DTHBZU7U3w7WcyUN4k9Onwp7VxsZMvtONEP/XWN6LesC5/nhYueivMQpf3e/R6g9W6xCfSJfRR3OVMgMo95+NTg1WCcRTS4Ji8bpnfAqOr/fnrA78vAyqNlLngdJGIUh0JPdf8bWowxY+pD4BJRwtWBzrgWXksacQFD3IcVTiDES4t6D6PIJOH0Il0nwGuzZzjEq8nDw25i172Iw0MzckbPhyQKbSI85y+77kcJI2Sbc7eoTSFLL1JYFAKaraZSxe3bE4zuyeJzOsmzEuaYLeTXi8jI9ov5uAbICtM+3O1v1aFN3FMM2ou1D7efnJiSAX6BvVMzN7SsgWNud6GaZxROI=
+    - secure: GPlUlmG8CRhpmrCgcLoil/iyufC8Spp+vA0IEUULi1yDDGuri5r4rC1i2iULh55KN444lsKmK1gMcXXFEuX0VtagfRjh/9fI0r2zUD3dGVztdmf23qSZHlhEPQSIdWDc4r26NbQPtFVyLdoIqrN2nPkhRxzXLEHe0VR8fRkuJTEG8BbQ74TIeB3suDUkrb+YBbglNvjlS2cyjAqw45/HRDxyZ1vXFdzvmHOOPUnGN2tlEdzctGLCAUoGKrz57iJX226Wu9CmPCkJudKDYN70lf38nblkM99SqHw+QcbP+JuXSfYzaZbVB/FUUWoW9yKqw6Q0sK748b7zwhsoeKaZt3O416KNkaIt+9+pm/bhHSp3HSFP4TFFcM6Epk8P9lxox/7PQS64YPxIVEmDljzPWRzBTK5Cp4a59X2nX6+bwirW6sSEror+Pz2oth9G30MKd22aCQxQAZfjUkWC6H09hsvjSNXmgT9SP5a/59vAxRw3V/r56e/HTPtflK09Gfm1FMB85mucRkKvsY2QFur6NKKdIvXhTVKRrVwhJPNEZaOwOumzI70ncj/yad/oZVCA/eDV95rcPxwUTMf+Nls4+VwzDU3Emxo0SPZUu4ZLzn+wueAIuzSqSuuaEMuNwXeaspQd+GeBHVb4N8MFCGVAsMbXem6bx1f9VbXgxjXYmG8=
